@@ -1,3 +1,15 @@
+/* 
+-----------------------------------------------
+Blogger Template Style
+Name:        Films999
+Version:     Premium Version
+Author:      Templates
+Author Url:  
+----------------------------------------------- */
+
+/*
+<!-- Variable definitions -->
+
 <Variable name="keycolor" description="Main Color" type="color" hideEditor="true" default="#008000" value="#008000"/>
 <Variable name="followByEmail" description="Follow By Email Text" type="string" hideEditor="true" default="Get all latest content delivered straight to your inbox." value="Get all latest content delivered straight to your inbox."/>
 <Variable name="body.font" description="Body Font" type="font" hideEditor="true" default="PT Sans, sans-serif" value="PT Sans, sans-serif"/>
