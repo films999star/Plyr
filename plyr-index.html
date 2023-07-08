@@ -1,0 +1,80 @@
+<div class="separator" style="clear: both; display: none; text-align: center;"><a href="https://firebasestorage.googleapis.com/v0/b/films9999999-cce03.appspot.com/o/Movie%20jpg%2FAmerican%20Soldiers_%20A%20Day%20in%20Iraq.jpg?alt=media&token=07a27253-12a1-4651-b76d-121411099ec2" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="448" data-original-width="315" height="320" src="https://firebasestorage.googleapis.com/v0/b/films9999999-cce03.appspot.com/o/Movie%20jpg%2FAmerican%20Soldiers_%20A%20Day%20in%20Iraq.jpg?alt=media&token=07a27253-12a1-4651-b76d-121411099ec2" width="225" /></a></div><br />
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Films999</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ak8750/Plyr/normalize.min.css">
+
+<link href="https://cdn.jsdelivr.net/gh/ak8750/Plyr/plyr.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/gh/ak8750/Plyr/plyr-styles.css" rel="stylesheet">
+    
+  </head>
+  
+<body>
+  
+<div class="container">
+
+	<video controls  poster="https://qqcdnpictest.mxplay.com/pic/853510bd4fa70902ccd05e4e9c24f56e/en/16x9/640x360/test_pic1616760820486.jpg"></video>
+
+</div>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', () => {
+        const controls = ['rewind', 'play-large', 'play', 'fast-forward', 'progress', 'current-time', 'current-time', 'mute', 'volume', 'settings', 'fullscreen'];     
+
+        const source =
+ 'https://media-content.akamaized.net/video/b28e3738018620b42fb21ae834271322/hls/h264_high.m3u8';
+
+        const video = document.querySelector('video');
+        // const player = Plyr.setup('video', {controls, captions: {active: false, update: false, language: 'auto'}});
+        const defaultOptions = {
+          controls,
+          captions: {
+            active: true,
+            update: false,
+            language: 'auto'
+          }
+        };
+        if (Hls.isSupported()) {
+          const hls = new Hls();
+          hls.loadSource(source);
+          hls.on(Hls.Events.MANIFEST_PARSED, function(event, data) {
+            // Transform available levels into an array of integers (height values).
+            const availableQualities = hls.levels.map((l) => l.height)
+            // Add new qualities to option
+            defaultOptions.quality = {
+              default: availableQualities[0],
+              options: availableQualities,
+              // this ensures Plyr to use Hls to update quality level
+              forced: true,
+              onChange: (e) => updateQuality(e),
+            }
+            // Initialize here
+            const player = new Plyr(video, defaultOptions);
+          });
+          hls.attachMedia(video);
+          window.hls = hls;
+        } else {
+          const player = new Plyr(video, defaultOptions);
+        }
+
+        function updateQuality(newQuality) {
+          window.hls.levels.forEach((level, levelIndex) => {
+            if (level.height === newQuality) {
+              console.log("Found quality match with " + newQuality);
+              window.hls.currentLevel = levelIndex;
+            }
+          });
+        }
+      });
+    </script>
+    <script src='https://cdn.jsdelivr.net/npm/hls.js@canary'></script>
+    <script src='https://unpkg.com/plyr@3'></script>
+ 
+</body>
+
+    </html>
