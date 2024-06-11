@@ -7,7 +7,7 @@ $(document)['ready'](function() {
 });
 window['onload'] = function() {
     var _0x9f2cx1 = document['getElementById']('mycontent');
-    _0x9f2cx1['setAttribute']('href', '');
+    _0x9f2cx1['setAttribute']('href', 'Google);
     _0x9f2cx1['setAttribute']('rel', 'dofollow');
     _0x9f2cx1['setAttribute']('title', 'Premium Blogger Templates');
     _0x9f2cx1['setAttribute']('style', 'display: inline-block!important; font-size: inherit!important; color: #ffffff!important; visibility: visible!important;z-index:99!important; opacity: 1!important;');
